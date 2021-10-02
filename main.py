@@ -41,9 +41,13 @@ search_menu='''
 
 
 '''
-
+def clears():
+    if os.name == "nt":
+        clears()
+    elif os.name == "posix":
+        os.system("clear")
 while True:
-    os.system('cls')
+    clears()
     print(app_name)
     print(menu)
     choice = input("Enter your choice: ")
@@ -51,7 +55,7 @@ while True:
 
     if choice == '1':
         #? add a new number
-        os.system('cls')
+        clears()
         print(app_name)
         name=input("Enter the name: ")
         
@@ -97,18 +101,18 @@ while True:
 
     elif choice == '2':
         #? edit a number
-        os.system('cls')
+        clears()
         print(app_name)
         print(edit_menu)
         option = input("Enter your choice: ")
         if option == '0':
             continue
         else:
-            os.system('cls')
+            clears()
             print(app_name)
             num_id = input("Enter the number's id: ")
             editable=num_db.Editor(num_id)
-            os.system('cls')
+            clears()
             print(app_name+'\n')
             print(f'ID: {num_id}\n\n')
             if option == '1':
@@ -184,11 +188,11 @@ while True:
 
 
     elif choice == '3':
-        os.system('cls')
+        clears))
         print(app_name)
         deleteid=input("Enter the ID to delete: ")
         try:
-            os.system('cls')
+            clears()
             print(app_name)
             num_db.delete(deleteid)
             print(f"Number {deleteid} was deleted!")
@@ -202,16 +206,16 @@ while True:
 
     elif choice == '4':
         #? search for a number
-        os.system('cls')
+        clears()
         print(app_name)
         print(search_menu)
         option = input("Enter your choice: ")
         if option == '1':
-            os.system('cls')
+            clears()
             print(app_name)
             name = input("Enter the name: ")
             try:
-                os.system('cls')
+                clears()
                 print(app_name)
                 rows = num_db.search_by_name(name=name)
                 if len(rows) == 0:
@@ -232,11 +236,11 @@ Number: {row[3]}
 
 
         elif option == '2':
-            os.system('cls')
+            clears()
             print(app_name)
             email = input("Enter the email: ")
             try:
-                os.system('cls')
+                clears()
                 print(app_name)
                 rows = num_db.search_by_email(email=email)
                 if len(rows) == 0:
@@ -255,11 +259,11 @@ Number: {row[3]}
                 input("Press enter to return to the main menu...")
         
         elif option == '3':
-            os.system('cls')
+            clears()
             print(app_name)
             id = input("Enter the id: ")
             try:
-                os.system('cls')
+                clears()
                 print(app_name)
                 rows = num_db.search_by_id(id=int(id))
                 if len(rows) == 0:
@@ -285,7 +289,7 @@ Number: {row[3]}
 
     elif choice == '5':
         try:
-            os.system('cls')
+            clears()
             print(app_name)
             rows = num_db.view()
             if len(rows) == 0:
